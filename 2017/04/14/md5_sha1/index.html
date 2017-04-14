@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Spring Boot应用的后台运行配置 | Hexo</title>
+    <title>Java MD5和SHA1摘要 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="John Doe">
     
 
     
-    <meta name="description" content="后台运行方式">
+    <meta name="description" content="MD5 和 SAH1摘要代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.security.MessageDigest;import java.security.NoSuchAlgorithmException;public cla">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot应用的后台运行配置">
-<meta property="og:url" content="http://yoursite.com/2017/04/14/SpringBoot Run/index.html">
+<meta property="og:title" content="Java MD5和SHA1摘要">
+<meta property="og:url" content="http://yoursite.com/2017/04/14/md5_sha1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="后台运行方式">
-<meta property="og:updated_time" content="2017-04-14T07:46:49.368Z">
+<meta property="og:description" content="MD5 和 SAH1摘要代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.security.MessageDigest;import java.security.NoSuchAlgorithmException;public cla">
+<meta property="og:updated_time" content="2017-04-14T08:25:30.166Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Boot应用的后台运行配置">
-<meta name="twitter:description" content="后台运行方式">
+<meta name="twitter:title" content="Java MD5和SHA1摘要">
+<meta name="twitter:description" content="MD5 和 SAH1摘要代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.security.MessageDigest;import java.security.NoSuchAlgorithmException;public cla">
 
     
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/04/14/SpringBoot Run/" title="Spring Boot应用的后台运行配置" itemprop="url">Spring Boot应用的后台运行配置</a>
+      <a href="/2017/04/14/md5_sha1/" title="Java MD5和SHA1摘要" itemprop="url">Java MD5和SHA1摘要</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-14T05:41:32.921Z" itemprop="datePublished"> 发表于 2017-04-14</time>
+    <time datetime="2017-04-14T08:21:39.515Z" itemprop="datePublished"> 发表于 2017-04-14</time>
     
   </p>
 </header>
@@ -97,39 +97,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成文件"><span class="toc-number">1.</span> <span class="toc-text">生成文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nohup"><span class="toc-number">2.</span> <span class="toc-text">nohup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统服务"><span class="toc-number">3.</span> <span class="toc-text">系统服务</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#MD5-和-SAH1摘要代码"><span class="toc-number">1.</span> <span class="toc-text">MD5 和 SAH1摘要代码</span></a></li></ol>
 		
 		</div>
 		
-		<hr>
-<p>Spring Boot的三种运行方式：</p>
-<ul>
-<li>运行Spring Boot的应用主类(一般是 Application.java)</li>
-<li>使用Maven运行mvn spring-boot:run</li>
-<li>mvn clean package 打成jar包后，使用java -jar  <em>*</em>.jar运行</li>
-</ul>
-<h3 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h3><p>   <code>java -jar ***********.jar &gt; log.file 2&gt;&amp;1 &amp;</code></p>
-<h3 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h3><p> 后台运行服务.<br>    <code>nohup java -jar ***********.jar &amp;</code></p>
-<h3 id="系统服务"><a href="#系统服务" class="headerlink" title="系统服务"></a>系统服务</h3><p>直接配置到系统服务。主要步骤如下：</p>
-<ul>
-<li><p>在pom.xml中添加Spring Boot的插件，并注意设置executable配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;build&gt;</div><div class="line">  &lt;plugins&gt;</div><div class="line">    &lt;plugin&gt;</div><div class="line">      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">      &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</div><div class="line">      &lt;configuration&gt;</div><div class="line">        &lt;executable&gt;true&lt;/executable&gt;</div><div class="line">      &lt;/configuration&gt;</div><div class="line">    &lt;/plugin&gt;</div><div class="line">  &lt;/plugins&gt;</div><div class="line">&lt;/build&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>完成上面配置后，使用mvn install打包，生成一个jar包</p>
-</li>
-<li><p>创建软连接到/etc/init.d/目录下</p>
-<p><code>sudo ln -s /var/yourapp/yourapp.jar /etc/init.d/yourapp</code></p>
-</li>
-<li>在完成软连接创建之后，我们就可以通过如下命令对<strong>*</strong>.jar 应用来控制启动、停止、重启操作了<br><code>/etc/init.d/yourapp start|stop|restart</code></li>
-</ul>
-  
+		<h4 id="MD5-和-SAH1摘要代码"><a href="#MD5-和-SAH1摘要代码" class="headerlink" title="MD5 和 SAH1摘要代码"></a>MD5 和 SAH1摘要代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.security.MessageDigest;</div><div class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MD5Util</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">MD5</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">char</span> hexDigits[] = &#123; <span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>,</div><div class="line">                <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span> &#125;;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">byte</span>[] strTemp = s.getBytes();</div><div class="line">            MessageDigest mdTemp = MessageDigest.getInstance(<span class="string">"MD5"</span>);</div><div class="line">            mdTemp.update(strTemp);</div><div class="line">            <span class="keyword">byte</span>[] md = mdTemp.digest();</div><div class="line">            <span class="keyword">int</span> j = md.length;</div><div class="line">            <span class="keyword">char</span> str[] = <span class="keyword">new</span> <span class="keyword">char</span>[j * <span class="number">2</span>];</div><div class="line">            <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">byte</span> byte0 : md) &#123;</div><div class="line">                str[k++] = hexDigits[byte0 &gt;&gt;&gt; <span class="number">4</span> &amp; <span class="number">0xf</span>];</div><div class="line">                str[k++] = hexDigits[byte0 &amp; <span class="number">0xf</span>];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(str);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">SHA1</span><span class="params">(String decript)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            MessageDigest digest = java.security.MessageDigest</div><div class="line">                    .getInstance(<span class="string">"SHA-1"</span>);</div><div class="line">            digest.update(decript.getBytes());</div><div class="line">            <span class="keyword">byte</span> messageDigest[] = digest.digest();</div><div class="line">            <span class="comment">// Create Hex String</span></div><div class="line">            StringBuffer hexString = <span class="keyword">new</span> StringBuffer();</div><div class="line">            <span class="comment">// 字节数组转换为 十六进制 数</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; messageDigest.length; i++) &#123;</div><div class="line">                String shaHex = Integer.toHexString(messageDigest[i] &amp; <span class="number">0xFF</span>);</div><div class="line">                <span class="keyword">if</span> (shaHex.length() &lt; <span class="number">2</span>) &#123;</div><div class="line">                    hexString.append(<span class="number">0</span>);</div><div class="line">                &#125;</div><div class="line">                hexString.append(shaHex);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> hexString.toString();</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Spring-Boot/">Spring Boot</a>
+  <a class="article-category-link" href="/categories/安全/">安全</a>
 </div>
 
 
@@ -139,7 +118,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/04/14/SpringBoot Run/" data-title="Spring Boot应用的后台运行配置 | Hexo" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/04/14/md5_sha1/" data-title="Java MD5和SHA1摘要 | Hexo" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -153,21 +132,13 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/04/13/hello-world/" title="Hello World">
+ <a href="/2017/04/14/java_rsa(1)/" title="Java RSA加密">
   <strong>上一篇：</strong><br/>
   <span>
-  Hello World</span>
+  Java RSA加密</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2017/04/14/chen/"  title="海，晨儿">
- <strong>下一篇：</strong><br/> 
- <span>海，晨儿
-</span>
-</a>
-</div>
 
 </nav>
 
@@ -179,7 +150,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成文件"><span class="toc-number">1.</span> <span class="toc-text">生成文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nohup"><span class="toc-number">2.</span> <span class="toc-text">nohup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统服务"><span class="toc-number">3.</span> <span class="toc-text">系统服务</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#MD5-和-SAH1摘要代码"><span class="toc-number">1.</span> <span class="toc-text">MD5 和 SAH1摘要代码</span></a></li></ol>
  
   </div>
 
